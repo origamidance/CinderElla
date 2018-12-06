@@ -16,9 +16,6 @@
 [submodule "blocks/Cinder-Utils"]
 	path = blocks/Cinder-Utils
 	url = https://github.com/origamidance/Cinder-Utils.git
-[submodule "blocks/Eigen"]
-	path = blocks/Eigen
-	url = https://github.com/eigenteam/eigen-git-mirror.git
 [submodule "projects/cardboard-codes"]
 	path = projects/cardboard-codes
 	url = https://gitlab.com/ist-bickel-group/research/research-projects/Ran-ZHANG/Cardboard-Assemblies/cardboard-codes.git
