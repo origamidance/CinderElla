@@ -33,3 +33,7 @@
 
 # Cquery
 .cquery_cached_index/
+
+# projects
+projects/*
+!projects/SampleApp/
