@@ -1,0 +1,53 @@
+From cd4d13f9cf26c4541c1cde366e91458b553612f3 Mon Sep 17 00:00:00 2001
+From: origamidance <origamidance@gmail.com>
+Date: Thu, 13 Dec 2018 13:04:01 +0100
+Subject: [PATCH] fix new mesa library problem with glload
+
+---
+ include/glload/_int_glx_type.h   | 5 +++--
+ include/glload/_int_glx_type.hpp | 3 ++-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/include/glload/_int_glx_type.h b/include/glload/_int_glx_type.h
+index 9e0e14a4e..a4d4ff1ae 100644
+--- a/include/glload/_int_glx_type.h
++++ b/include/glload/_int_glx_type.h
+@@ -1,10 +1,11 @@
+ #ifndef GLXWIN_GEN_TYPE_H
+ #define GLXWIN_GEN_TYPE_H
+-#ifdef __glxext_h_
++#if defined(__glxext_h_) || defined(__glx_glxext_h_)
+ #error Attempt to include glx_exts after including glxext.h
+ #endif
+ 
+ #define __glxext_h_
++#define __glx_glxext_h_
+ 
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+@@ -109,4 +110,4 @@ typedef unsigned __int64 uint64_t;
+     char pipeName[80]; /* Should be [GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX] */
+     int XOrigin, YOrigin, maxHeight, maxWidth;
+ } GLXPipeRectLimits;
+-	#endif /*GLXWIN_GEN_TYPE_H*/
++#endif /*GLXWIN_GEN_TYPE_H*/
+diff --git a/include/glload/_int_glx_type.hpp b/include/glload/_int_glx_type.hpp
+index 5e3b46649..7940f7341 100644
+--- a/include/glload/_int_glx_type.hpp
++++ b/include/glload/_int_glx_type.hpp
+@@ -1,10 +1,11 @@
+ #ifndef GLXWIN_GEN_TYPE_HPP
+ #define GLXWIN_GEN_TYPE_HPP
+-#ifdef __glxext_h_
++#if defined(__glxext_h_) || defined(__glx_glxext_h_)
+ #error Attempt to include glx_exts after including glxext.h
+ #endif
+ 
+ #define __glxext_h_
++#define __glx_glxext_h_
+ 
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+-- 
+2.20.0
+
